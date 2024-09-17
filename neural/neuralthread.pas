@@ -126,6 +126,7 @@ type
   procedure NeuralInitCriticalSection(var pCritSec: TRTLCriticalSection);
   procedure NeuralDoneCriticalSection(var pCritSec: TRTLCriticalSection);
   function GetProcessId(): {$IFDEF FPC}integer{$ELSE}integer{$ENDIF};
+  procedure DebugThreadCount();
 
 implementation
 
@@ -182,11 +183,17 @@ begin
   {$ENDIF}
 end;
 
+procedure DebugThreadCount;
+begin
+  WriteLn('CPU threads reported by the operating system: ', NeuralDefaultThreadCount,'.');
+end;
+
 {$IFDEF FPC}
 function GetProcessId(): integer;
 begin
   GetProcessId := {$IFDEF WINDOWS}GetCurrentProcessId(){$ELSE}fpgetppid(){$ENDIF};
 end;
+
 {$ELSE}
 //TODO: properly implement process ID for delphi
 function GetProcessId(): integer;

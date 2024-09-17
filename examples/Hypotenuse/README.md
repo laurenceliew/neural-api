@@ -1,5 +1,8 @@
 # Learning Hypotenuse Function
 
+## 2 Minutes Intro Video
+[![Watch the video](https://img.youtube.com/vi/PdNTgI_qSyo/0.jpg)](https://youtu.be/PdNTgI_qSyo)
+
 This example has these main steps:
 * Preparing training data
 * Creating the neural network
@@ -40,11 +43,11 @@ This is how the neural network is created:
       TNNetInput.Create(2),
       TNNetFullConnectReLU.Create(32),
       TNNetFullConnectReLU.Create(32),
-      TNNetFullConnectReLU.Create(1)
+      TNNetFullConnectLinear.Create(1)
     ]);
 ```
 
-As you can see, there is one input layer followed by 2 fully connected layers with 32 neurons each. The last layer contains only one neuron for only one output.
+As you can see, there is one input layer followed by 2 fully connected layers `TNNetFullConnectReLU` with 32 neurons each. The last layer `TNNetFullConnectLinear` contains only one neuron for only one output. This last layer doesn't have a ReLU as the hypotenuse results into a positive value.
 
 This is how the fitting object is created and run:
 ```
